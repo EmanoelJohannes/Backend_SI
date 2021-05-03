@@ -11,7 +11,6 @@ class UserController {
     const login = await User.findByLogin(req.body.login);
 
     if (login[0]) {
-      console.log("Achou login", login);
       return res.json({ error: "Login já cadastrado." });
     }
 
@@ -22,8 +21,6 @@ class UserController {
       req.body.login = req.body.login.replace(/\s/g, "");
       
       const newUser = await User.storeUser(req.body);
-
-      console.log("Tudo certo", newUser, req.body);
 
       if (newUser) {
         // Agora que sabemos que existe, pois foi cadastrado, buscamos as informações
