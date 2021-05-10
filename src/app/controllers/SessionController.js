@@ -6,7 +6,7 @@ const authConfig = require('../../config/auth');
 class SessionController {
     async store(req, res){
         var { login, senha } = req.body;
-
+        
         var loginNoWhiteSpace = login.replace(/\s/g, "");
 
         const checkUser = await User.findByLogin(loginNoWhiteSpace);

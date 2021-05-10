@@ -117,6 +117,27 @@ class UserModel {
     return result;
   }
 
+  async updateUser(login, nome) {
+
+    var result;
+
+    await db("usuarios")
+      .select('*')
+      .update(
+        {nome: nome}
+      )
+      .where({ login })
+      .then(response => {
+        result = response;
+      })
+      .catch(erro => {
+        console.log("Erro updateUser Model => ", erro);
+        return;
+      });
+
+    return result;
+  }
+
 }
 
 module.exports = new UserModel();

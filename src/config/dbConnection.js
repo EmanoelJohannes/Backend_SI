@@ -13,7 +13,7 @@ var data = ({
 
 var connection = require('knex')(data);
 
-if (connection) console.log("Conectado ao MySQL - VacinAção!");
+if (connection) console.log("Conectado ao MySQL SERVIDOR - VacinAção!");
 
 module.exports = connection;
 
@@ -33,6 +33,6 @@ module.exports = connection;
 
 // var connection = require('knex')(data);
 
-// if (connection) console.log("Conectado ao MySQL - VacinAção!");
+// if (connection) console.log("Conectado ao MySQL LOCAL - VacinAção!");
 
 // module.exports = connection;

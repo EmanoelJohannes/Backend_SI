@@ -47,6 +47,17 @@ class AgendamentoController {
         return res.json({ok: true});
     }
 
+    async getAgendamentos(req, res) {
+
+        const agendamentos = await Agendamento.getAgendamentosByLogin(req.params.id);    
+
+
+        agendamentos.forEach(agendamento => {
+            agendamento.data_formatada = format(new Date(agendamento.data_hora), "dd/MM/yyyy 'às' HH:mm");
+        });
+
+        return res.json(agendamentos);
+    }
 
 }
 

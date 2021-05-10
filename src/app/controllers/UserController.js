@@ -7,7 +7,6 @@ const crypto = require('crypto');
 class UserController {
 
   async storeUser(req, res) {
-    // console.log(req.body);
     const login = await User.findByLogin(req.body.login);
 
     if (login[0]) {
@@ -33,6 +32,28 @@ class UserController {
       }
     }
   }
+
+
+  async updateUser(req, res) {
+
+    var { nome, login } = req.body;
+
+    const result = await User.updateUser(login, nome);
+
+    return res.json({ok: true})
+    
+  } 
+  
+  
+  async getUser(req, res) {
+
+    const { login } = req.params;
+
+    const result = await User.findByLogin(login);
+
+    return res.json(result)
+    
+  }   
 
 }
 

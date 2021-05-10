@@ -3,7 +3,7 @@ const Posto = require("../models/Posto");
 class PostoController {
 
   async storePosto(req, res) {
-      console.log(req.body);
+    
       const posto = await Posto.storePosto(req.body);    
       
       return res.json(posto);

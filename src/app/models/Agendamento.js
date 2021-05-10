@@ -39,6 +39,24 @@ class AgendamentoModel {
       return result;
     }
 
+    async getAgendamentosByLogin(id_usuario) {
+      var result;
+      
+      await db("agendamento")
+        .select("*")
+        .join("posto", "posto.id_posto", "=", "agendamento.id_posto")
+        .where("agendamento.id_usuario", "=", id_usuario)       
+        .then(response => {
+          result = response;
+        })
+        .catch(erro => {
+          console.log("Erro getAgendamentosByLogin Model => ", erro);
+          return;
+      });
+      return result;
+
+  }
+
 }
 
 // Date=convert(datetime, '2016-12-25');
